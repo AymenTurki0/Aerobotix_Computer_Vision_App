@@ -10,7 +10,7 @@ This project showcases our work in **computer vision** through:
 - 🖥️ A modern **ElectronJS + TailwindCSS application** presenting our projects.  
 - 🎮 A fun **Fruit Ninja with Computer Vision game** built with Python + OpenCV.  
 
-This app will be presented during the **Journée d’Intégration des Clubs INSAT** to demonstrate our club’s expertise in robotics and vision systems.
+This app will be presented during the INSAT Club Integration Day to demonstrate our club’s expertise in robotics and vision systems.
 
 ---
 

@@ -35,7 +35,7 @@ Aerobotix_App/
 ├── requirements.py             # Installs Python dependencies
 ├── main.js                     # Electron main process
 └── package.json
-
+```
 ## 🛠️ Installation & Setup
 
 ### 0️⃣ Clone the Repository

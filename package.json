@@ -1,0 +1,31 @@
+{
+  "name": "aerobotix-app",
+  "version": "1.0.0",
+  "description": "Aerobotix Application",
+  "author": "Your Name",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "build:css": "tailwindcss -i ./src/style.css -o ./src/output.css --watch",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.aerobotix.app",
+    "productName": "Aerobotix",
+    "win": {
+      "target": "nsis",
+      "icon": "assets/1.ico"
+    }
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "electron": "^37.3.1",
+    "electron-builder": "^26.0.12",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17"
+  },
+  "dependencies": {
+    "python-shell": "^5.0.0"
+  }
+}

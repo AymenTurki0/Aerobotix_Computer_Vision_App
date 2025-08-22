@@ -1,0 +1,77 @@
+fetch('menu.html')
+  .then(response => response.text())
+  .then(data => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(data, 'text/html');
+
+    // Extract parts separately
+    const menuContainer = doc.querySelector('#dot-menu-container');
+    const commentModal = doc.querySelector('#comment-modal');
+
+    // Append to body directly
+    document.body.appendChild(menuContainer);
+    document.body.appendChild(commentModal);
+
+    const toggleButton = document.getElementById('menu-toggle');
+    const dotsMenu = document.getElementById('dots-menu');
+
+    // Toggle menu
+    toggleButton.addEventListener('click', () => {
+      const isVisible = dotsMenu.classList.contains('opacity-100');
+      dotsMenu.classList.toggle('opacity-100', !isVisible);
+      dotsMenu.classList.toggle('pointer-events-auto', !isVisible);
+      dotsMenu.classList.toggle('opacity-0', isVisible);
+      dotsMenu.classList.toggle('scale-100', !isVisible);
+      dotsMenu.classList.toggle('scale-75', isVisible);
+    });
+
+    // Highlight current page dot
+    const currentPage = document.body.getAttribute('data-page');
+    dotsMenu.querySelectorAll('.dot').forEach(dot => {
+      if (dot.dataset.page === currentPage) {
+        dot.classList.add('bg-pink-500', 'scale-125');
+        dot.classList.remove('bg-black');
+      }
+      dot.addEventListener('mouseenter', () => dot.classList.add('bg-pink-400', 'scale-110'));
+      dot.addEventListener('mouseleave', () => {
+        if (dot.dataset.page !== currentPage) {
+          dot.classList.remove('bg-pink-400', 'scale-110');
+        }
+      });
+    });
+
+    // Comment modal logic
+    const leaveCommentBtn = document.getElementById('leave-comment');
+    const closeCommentBtn = document.getElementById('close-comment');
+    const cancelCommentBtn = document.getElementById('cancel-comment');
+    const saveCommentBtn = document.getElementById('save-comment');
+    const commentText = document.getElementById('comment-text');
+
+    function openCommentModal() {
+      commentModal.classList.remove('opacity-0', 'pointer-events-none');
+      commentModal.classList.add('opacity-100', 'pointer-events-auto');
+    }
+
+    function closeCommentModal() {
+      commentModal.classList.add('opacity-0', 'pointer-events-none');
+      commentModal.classList.remove('opacity-100', 'pointer-events-auto');
+      commentText.value = '';
+    }
+
+    leaveCommentBtn.addEventListener('click', openCommentModal);
+    closeCommentBtn.addEventListener('click', closeCommentModal);
+    cancelCommentBtn.addEventListener('click', closeCommentModal);
+
+    saveCommentBtn.addEventListener('click', () => {
+      const comment = commentText.value.trim();
+      if (comment) {
+        const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+        comments.push({ page: currentPage, text: comment, date: new Date().toISOString() });
+        localStorage.setItem('comments', JSON.stringify(comments));
+        alert('Comment saved!');
+        closeCommentModal();
+      } else {
+        alert('Please enter a comment before saving.');
+      }
+    });
+  });

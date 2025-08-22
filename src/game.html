@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aerobotix - Game</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+  </style>
+</head>
+<body class="text-white flex flex-col justify-between items-center h-screen text-center px-4" data-page="page4">
+<script src="menu.js"></script>
+
+
+  <!-- Top Content -->
+  <div class="mt-12">
+    <h1 class="text-5xl font-bold mb-6 bg-gradient-to-r from-pink-400 via-yellow-400 to-pink-500 text-transparent bg-clip-text animate-pulse">
+      🎮 Aerobotix Fruit Ninja
+    </h1>
+    <p class="text-lg text-slate-300 mb-10">
+      Cut fruits with AI-powered Computer Vision!
+    </p>
+
+    <!-- Launch Python Game -->
+    <button onclick="startGame()" 
+            class="px-10 py-4 bg-gradient-to-r from-pink-500 to-yellow-500 
+                   rounded-full text-white font-extrabold text-xl shadow-2xl 
+                   hover:scale-110 hover:shadow-pink-500/50 transition-all duration-300">
+      ▶ Start Game
+    </button>
+
+    <!-- Motivational Text -->
+    <p class="mt-10 text-slate-200 text-lg max-w-xl mx-auto leading-relaxed">
+      🌍 After playing, don’t forget to fill the form and <span class="text-yellow-400 font-semibold">join us</span> 
+      in an amazing <span class="text-pink-400 font-semibold">Computer Vision journey</span> with Aerobotix INSAT!
+    </p>
+  </div>
+
+  <!-- Bottom Return Button -->
+  <div class="mb-8">
+    <button onclick="window.location.href='welcome.html'"
+            class="px-8 py-3 bg-gradient-to-r from-blue-500 to-cyan-400 
+                   rounded-full text-white font-bold text-lg shadow-xl 
+                   hover:scale-105 hover:shadow-cyan-500/50 transition-all duration-300">
+      ⬅ Return to Home Page
+    </button>
+  </div>
+
+  <script>
+    function startGame() {
+      window.electronAPI.runPythonGame().then((msg) => {
+        alert(msg);
+      }).catch(err => {
+        alert("Error: " + err);
+      });
+    }
+  </script>
+</body>
+</html>

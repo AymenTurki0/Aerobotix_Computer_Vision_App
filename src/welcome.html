@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aerobotix - Welcome</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'fade-in': 'fadeIn 1.5s ease-out forwards',
+            'slide-up': 'slideUp 1s ease-out forwards',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(30px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            },
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      overflow: hidden;
+    }
+
+    .logo-text {
+      background: linear-gradient(to right, #ef4444 0%, #3b82f6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gradient-border {
+      position: relative;
+      border: double 3px transparent;
+      background-image: linear-gradient(#0f172a, #0f172a), 
+                        linear-gradient(to right, #ef4444, #3b82f6);
+      background-origin: border-box;
+      background-clip: content-box, border-box;
+    }
+
+    .particle {
+      position: absolute;
+      background: linear-gradient(to right, #ef4444, #3b82f6);
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+
+    /* Force modal above everything */
+    #comment-modal {
+      z-index: 9999 !important;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center text-white relative overflow-hidden" data-page="page1">
+
+  <!-- Menu gets injected here by menu.js -->
+  <script src="menu.js"></script>
+
+  <!-- Animated background particles -->
+  <div id="particles-container" class="absolute inset-0 overflow-hidden"></div>
+
+  <div class="relative z-10 flex flex-col items-center justify-center p-8 max-w-2xl mx-auto text-center">
+    <!-- Logo Container with Animation -->
+    <div class="mb-8 animate-float">
+      <div class="gradient-border rounded-full p-6 mb-6">
+        <!-- Your SVG robot here -->
+        <svg class="w-32 h-32" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="50" y="40" width="100" height="80" rx="10" fill="#1e293b" stroke="url(#gradient)" stroke-width="4"/>
+          <circle cx="80" cy="70" r="10" fill="#3b82f6"/>
+          <circle cx="120" cy="70" r="10" fill="#ef4444"/>
+          <line x1="100" y1="40" x2="100" y2="20" stroke="url(#gradient)" stroke-width="3"/>
+          <circle cx="100" cy="18" r="5" fill="#3b82f6"/>
+          <path d="M75 95 Q100 110 125 95" stroke="url(#gradient)" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#ef4444" />
+              <stop offset="100%" stop-color="#3b82f6" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Welcome Text -->
+    <h1 class="text-5xl md:text-6xl font-bold mb-6 animate-fade-in opacity-0" style="animation-delay: 0.5s;">
+      Welcome to <span class="logo-text">Aerobotix</span>
+    </h1>
+
+    <!-- Tagline -->
+    <div class="animate-slide-up opacity-0 mb-10" style="animation-delay: 1s;">
+      <div class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-4 text-xl">
+        <span class="px-4 py-2 bg-red-500/10 rounded-lg text-red-400">Learn</span>
+        <span class="hidden md:block">→</span>
+        <span class="px-4 py-2 bg-blue-500/10 rounded-lg text-blue-400">Create</span>
+        <span class="hidden md:block">→</span>
+        <span class="px-4 py-2 bg-gradient-to-r from-red-500/20 to-blue-500/20 rounded-lg text-white">
+          Innovate
+        </span>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <p class="text-lg text-slate-300 mb-10 animate-fade-in opacity-0" style="animation-delay: 1.5s;">
+      Join our community of innovators and pioneers. Let's build the future together with cutting-edge robotics technology.
+    </p>
+
+    <!-- Start Button -->
+    <button id="startButton" class="animate-slide-up opacity-0 group relative px-8 py-4 bg-gradient-to-r from-red-500 to-blue-500 rounded-full text-white font-bold text-lg overflow-hidden transition-all duration-500 ease-out hover:from-red-600 hover:to-blue-600 hover:scale-105 hover:shadow-2xl" style="animation-delay: 2s;">
+      <span class="relative z-10">Explore Our Computer Vision Chapter</span>
+      <div class="absolute inset-0 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <div class="w-4 h-4 bg-white rounded-full animate-ping"></div>
+      </div>
+    </button>
+  </div>
+
+  <script>
+    // Create animated particles in background
+    function createParticles() {
+      const container = document.getElementById('particles-container');
+      const particleCount = 30;
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        const size = Math.random() * 10 + 2;
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        const delay = Math.random() * 5;
+        const duration = Math.random() * 10 + 10;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${posX}vw`;
+        particle.style.top = `${posY}vh`;
+        particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+        container.appendChild(particle);
+      }
+    }
+
+    // Button redirect
+    document.getElementById('startButton').addEventListener('click', function() {
+      this.classList.add('scale-95');
+      setTimeout(() => {
+        window.location.href = 'presentation1.html';
+      }, 300);
+    });
+
+    document.addEventListener('DOMContentLoaded', createParticles);
+  </script>
+</body>
+</html>

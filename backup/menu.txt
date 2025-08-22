@@ -1,0 +1,39 @@
+<!-- menu.html -->
+<div id="dot-menu-container" class="fixed top-4 left-4 z-50">
+  <!-- Menu Toggle Button -->
+  <button id="menu-toggle"
+          class="bg-gradient-to-r from-red-500 to-blue-500 text-white font-bold p-3 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 transform-gpu">
+    ≡
+  </button>
+
+  <!-- Dots Menu in a box -->
+  <div id="dots-menu"
+       class="flex flex-col items-center mt-4 space-y-4 opacity-0 pointer-events-none scale-75 transform transition-all duration-500 ease-out
+              bg-white bg-opacity-90 backdrop-blur-md rounded-xl p-4 shadow-2xl">
+    <a href="welcome.html" class="dot w-5 h-5 bg-black rounded-full shadow-xl transition-all duration-500 transform-gpu" data-page="page1" title="Page 1"></a>
+    <a href="presentation1.html" class="dot w-5 h-5 bg-black rounded-full shadow-xl transition-all duration-500 transform-gpu" data-page="page2" title="Page 2"></a>
+    <a href="presentation2.html" class="dot w-5 h-5 bg-black rounded-full shadow-xl transition-all duration-500 transform-gpu" data-page="page3" title="Page 3"></a>
+    <a href="game.html" class="dot w-5 h-5 bg-black rounded-full shadow-xl transition-all duration-500 transform-gpu" data-page="page4" title="Game"></a>
+
+    <!-- Leave Comment Button -->
+    <button id="leave-comment"
+            class="mt-2 px-4 py-2 bg-pink-500 text-white rounded-lg shadow-md hover:bg-pink-600 transition-colors duration-300">
+      Leave Comment
+    </button>
+  </div>
+</div>
+
+<!-- Comment Modal -->
+<div id="comment-modal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center opacity-0 pointer-events-none transition-opacity duration-300">
+  <div class="bg-white rounded-xl p-6 w-80 shadow-2xl relative">
+    <h2 class="text-xl font-bold mb-4">Leave a Comment</h2>
+    <textarea id="comment-text" 
+          class="w-full h-24 border border-gray-300 rounded-md p-2 mb-4 resize-none bg-gray-800 text-white" 
+          placeholder="Write your comment here..."></textarea>
+    <div class="flex justify-end gap-2">
+      <button id="cancel-comment" class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 transition-colors">Cancel</button>
+      <button id="save-comment" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">Save</button>
+    </div>
+    <button id="close-comment" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 font-bold text-lg">&times;</button>
+  </div>
+</div>

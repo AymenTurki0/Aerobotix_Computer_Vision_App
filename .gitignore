@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.exe
+*.msi
+*.dmg
+*.asar
+*.log
+.vscode/
+.idea/

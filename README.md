@@ -16,7 +16,7 @@ This app will be presented during the INSAT Club Integration Day to demonstrate 
 
 ## 📂 Repository Structure
 
-\`\`\`
+```plaintext
 Aerobotix_App/
 │
 ├── assets/                     # Logos & screenshots
@@ -35,9 +35,6 @@ Aerobotix_App/
 ├── requirements.py             # Installs Python dependencies
 ├── main.js                     # Electron main process
 └── package.json
-\`\`\`
-
----
 
 ## 🛠️ Installation & Setup
 

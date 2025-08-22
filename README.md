@@ -110,7 +110,7 @@ If you cloned the repo, update **absolute paths** in these files before running:
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="./assets/app.png" alt="App Screenshot" width="400"/>
+  <img src="./assets/app.PNG" alt="App Screenshot" width="400"/>
   <img src="./assets/fruitgame.png" alt="Fruit Ninja CV Game" width="400"/>
 </p>
 

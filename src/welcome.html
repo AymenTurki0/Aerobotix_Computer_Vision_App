@@ -163,5 +163,19 @@
 
     document.addEventListener('DOMContentLoaded', createParticles);
   </script>
-</body>
+  <!-- Import mouse tracking -->
+<div id="mouse-container"></div>
+<script>
+  fetch("mouse.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("mouse-container").innerHTML = html;
+      const script = document.createElement("script");
+      script.src = "mouse.js";
+      script.onload = () => {
+        initMouseTracking(); // 👈 start after script loads
+      };
+      document.body.appendChild(script);
+    });
+</script>
 </html>

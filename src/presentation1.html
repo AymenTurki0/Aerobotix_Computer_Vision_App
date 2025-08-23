@@ -1,2 +1,72 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Aerobotix - Presentation 1</title> <script src="https://cdn.tailwindcss.com"></script> <style> @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap'); body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); } .logo-text { background: linear-gradient(to right, #ef4444, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; } </style> </head> <body class="text-white flex flex-col justify-center items-center h-screen text-center px-6" data-page="page2"> <script src="menu.js"></script>
- <!-- Hero Section --> <h1 class="text-5xl md:text-6xl font-bold mb-6"> Our <span class="logo-text">AI & Robotics</span> Journey </h1> <p class="text-lg text-slate-300 max-w-2xl mb-10"> At Aerobotix INSAT, we combine robotics with cutting-edge AI. From <span class="text-red-400 font-semibold">object detection</span> to <span class="text-blue-400 font-semibold">color recognition</span> and autonomous <span class="text-purple-400 font-semibold">robot navigation</span>. </p> <!-- Robot Image --> <div class="relative group mt-8 w-80 rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition duration-500"> <img src="C:\Users\LENOVO\Desktop\Aerobotix_App\assets\robot.png" alt="Our Robot" class="w-full h-auto object-contain" /> <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center"> <p class="text-lg font-semibold text-white px-4 text-center"> Our robot for the 2024 International Competition in France </p> </div> </div> <!-- Button to go to next page --> <a href="presentation2.html" class="mt-7 px-8 py-4 bg-gradient-to-r from-red-500 to-blue-500 rounded-full text-white font-bold text-lg shadow-lg hover:scale-105 transition-transform duration-300"> Discover Our Projects → </a> </body> </html>
+<!DOCTYPE html>
+<html lang="en"> 
+<head> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Aerobotix - Presentation 1</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+
+    .logo-text {
+      background: linear-gradient(to right, #ef4444, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head> 
+
+<body class="text-white flex flex-col justify-center items-center h-screen text-center px-6" data-page="page2"> 
+  <script src="menu.js"></script>
+
+  <!-- Hero Section -->
+  <h1 class="text-5xl md:text-6xl font-bold mb-6">
+    Our <span class="logo-text">AI & Robotics</span> Journey
+  </h1>
+
+  <p class="text-lg text-slate-300 max-w-2xl mb-10">
+    At Aerobotix INSAT, we combine robotics with cutting-edge AI. From 
+    <span class="text-red-400 font-semibold">object detection</span> to 
+    <span class="text-blue-400 font-semibold">color recognition</span> and autonomous 
+    <span class="text-purple-400 font-semibold">robot navigation</span>.
+  </p>
+
+  <!-- Robot Image -->
+  <div class="relative group mt-8 w-80 rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition duration-500"> 
+    <img src="C:\Users\LENOVO\Desktop\Aerobotix_App\assets\robot.png" 
+         alt="Our Robot" 
+         class="w-full h-auto object-contain" />
+
+    <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center">
+      <p class="text-lg font-semibold text-white px-4 text-center">
+        Our robot for the 2024 International Competition in France
+      </p>
+    </div> 
+  </div>
+
+  <!-- Button to go to next page -->
+  <a href="presentation2.html" 
+     class="mt-7 px-8 py-4 bg-gradient-to-r from-red-500 to-blue-500 rounded-full text-white font-bold text-lg shadow-lg hover:scale-105 transition-transform duration-300">
+    Discover Our Projects →
+  </a> 
+<div id="mouse-container"></div>
+<script>
+  fetch("mouse.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("mouse-container").innerHTML = html;
+      const script = document.createElement("script");
+      script.src = "mouse.js";
+      script.onload = () => {
+        initMouseTracking(); // 👈 start after script loads
+      };
+      document.body.appendChild(script);
+    });
+</script>
+</body>
+</html>
